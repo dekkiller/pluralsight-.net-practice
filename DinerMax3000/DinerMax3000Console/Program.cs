@@ -20,6 +20,17 @@ namespace DinerMax3000Console
             outsideDrinks.Disclaimer = "Don't drink and drive.";
             outsideDrinks.addMenuItems("IPA", "IPA Beverage", 10.99);
             outsideDrinks.addMenuItems("pina colada", "no more worries", 9.75);
+            try
+            {
+                outsideDrinks.addMenuItems("Screwdriver", "dont drink this", 0);
+            }
+            catch (Exception thrownException)
+            {
+                Console.WriteLine(thrownException.Message);
+//                throw; // This throws exception if price <= 0 which it will in this case b/c item price is 0
+            }
+
+//          outsideDrinks.addMenuItems("Screwdriver", "dont drink this", 0);
 
             var orderFive = new Order();
 
@@ -32,12 +43,16 @@ namespace DinerMax3000Console
             {
                 orderFive.items.Add(summerMenu.Items[i]);
             }
+
+            Console.WriteLine(orderFive.totalPrice);
+            Console.WriteLine(orderFive.taxCost);
+            Console.WriteLine(orderFive.totalWithTax);
        
 
-//            foreach (var item in orderFive.items)
-//            {
-//                Console.WriteLine(item.Name);
-//            }
+            foreach (var item in orderFive.items)
+            {
+                Console.WriteLine("Item: " + item.Name + " Price: " + item.Price);
+            }
 
         }
     }
