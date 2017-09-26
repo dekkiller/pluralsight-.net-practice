@@ -42,6 +42,9 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="DrinkMenu.cs" />
+    <Compile Include="dsDinerMax3000.cs">
+      <DependentUpon>dsDinerMax3000.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dsDinerMax3000.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
