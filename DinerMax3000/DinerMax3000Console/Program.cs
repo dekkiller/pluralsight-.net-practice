@@ -37,18 +37,18 @@ namespace DinerMax3000Console
 
             List<Menu> menusFromDB = Menu.GetAllMenus();
             Menu firstMenu = menusFromDB[0];
-            firstMenu.SaveMenuItem("Pizza", "Combination of cheese and sauce", 11.99);
+            firstMenu.SaveMenuItem("Quiche", "Combination of cheese and sauce", 11.99);
             menusFromDB = Menu.GetAllMenus();
-
-            var orderFive = new Order();
-
-            foreach (var menuinDB in menusFromDB)
-            {
-                foreach (var menuitem in menuinDB.Items)
-                {
-                    orderFive.items.Add(menuitem);
-                }
-            }
+            Console.WriteLine("-------------------------------");
+//            var orderFive = new Order();
+//
+//            foreach (var menuinDB in menusFromDB)
+//            {
+//                foreach (var menuitem in menuinDB.Items)
+//                {
+//                    orderFive.items.Add(menuitem);
+//                }
+//            }
 
 
 //            for (int i = 0; i < summerMenu.Items.Count; i++)
@@ -56,16 +56,44 @@ namespace DinerMax3000Console
 //                orderFive.items.Add(summerMenu.Items[i]);
 //            }
 
-            Console.WriteLine("Total Price of items: " + orderFive.totalPrice);
-            Console.WriteLine("Total Price of tax: " + orderFive.taxCost);
-            Console.WriteLine("Total Price of meal: " + orderFive.totalWithTax);
-       
+//            Console.WriteLine("Total Price of items: " + orderFive.totalPrice);
+//            Console.WriteLine("Total Price of tax: " + orderFive.taxCost);
+//            Console.WriteLine("Total Price of meal: " + orderFive.totalWithTax);
+//       
+//
+//            foreach (var item in orderFive.items)
+//            {
+//                Console.WriteLine("Item: " + item.Name + " Price: " + item.Price);
+//            }
+//            Console.ReadKey();
 
-            foreach (var item in orderFive.items)
+            var ordersFromDB = Order.GetAllOrders();
+            Order firstOrder = ordersFromDB[0];
+            foreach (var order in ordersFromDB)
             {
-                Console.WriteLine("Item: " + item.Name + " Price: " + item.Price);
+                Console.WriteLine("Server Name: " + order.serverName);
+                foreach (var menuitem in order.items)
+                {
+                    Console.WriteLine("Item Name: " + menuitem.Name + " " + menuitem.Price);
+                }
+                Console.WriteLine("Total Price of items: " + order.totalPrice);
+                Console.WriteLine("Total Price of tax: " + order.taxCost);
+                Console.WriteLine("Total Price of meal: " + order.totalWithTax + "\n");
             }
-            Console.ReadKey();
+            //firstOrder.AddOrderItemToExistingOrder("taco");
+            //firstOrder.AddOrderItemToExistingOrder("pizone");
+//            testing addorderitem
+            foreach (var order in ordersFromDB)
+            {
+                Console.WriteLine("Server Name: " + order.serverName);
+                foreach (var menuitem in order.items)
+                {
+                    Console.WriteLine("Item Name: " + menuitem.Name + " " + menuitem.Price);
+                }
+                Console.WriteLine("Total Price of items: " + order.totalPrice);
+                Console.WriteLine("Total Price of tax: " + order.taxCost);
+                Console.WriteLine("Total Price of meal: " + order.totalWithTax +"\n");
+            }
 
         }
     }
